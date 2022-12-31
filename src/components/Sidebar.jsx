@@ -2,7 +2,6 @@ import React from 'react'
 import { sidebarLinks } from '../constants'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-import {Link} from 'react-router-dom'
 
 const SidebarItem = ({ item }) => (
     <Link to={item.link}>
@@ -22,7 +21,7 @@ const Sidebar = ({ loggedIn }) => {
     const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
     console.log(user);
     return (
-        <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh] items-center justify-between bg-black/5 ${!isAuthenticated && 'hidden'}  `}>
+        <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh] items-center justify-between bg-black/5 ${!isAuthenticated  && 'hidden'}  `}>
             <div>
                 <img src={user.picture} className="w-[100px] rounded-full" alt="" />
                 <h1 className='font-bold text-gray-800 font-sans text-center mt-5'>

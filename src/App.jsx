@@ -14,7 +14,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
   const { isAuthenticated } = useAuth0();
-  const [loggedIn, useloggin] = useState(true);
+  const [loggedIn, useloggedIn] = useState(true);
 
   if (!isAuthenticated) {
     return (<div className="App">
@@ -24,9 +24,7 @@ function App() {
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/features' element={<Features/>}></Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>
-        <Route path='/explore' element={<Explore/>}></Route>
-        <Route path='/lend/add' element={<Lending/>}></Route>
+        
 
 
         </Routes>
@@ -35,11 +33,14 @@ function App() {
   }
   else {
     return (<div className="App flex justify-start w-[100vw] m-0 p-0">
+       <Navbar></Navbar>
       <Sidebar loggedIn={loggedIn}></Sidebar>
       <div className="w-[100%]">
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
+          <Route path='/explore' element={<Explore/>}></Route>
+        <Route path='/lend/add' element={<Lending/>}></Route>
         </Routes>
       </div>
 

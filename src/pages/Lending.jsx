@@ -1,19 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
+
 
 
 const Lending = () => {
+
+    const handleSubmit=()=>{
+        
+    }
+
     const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:''})
   return (
-    <div className='flex flex-col mt-[12vh] w-[100%]'>
+    <div className='flex flex-col mt-[12vh] w-[100%] items-center'>
         <div className='text-center text-5xl font-mono font-bold text-gray-500'>
             <h1>Add your item:</h1>
         </div>
 
-        <form action="">
-            <div><input type="text" name="title" value={data.title} placeholder='Title'/></div>
-            <div><input type="text" name="title" value={data.discription} placeholder='Title'/></div>
-            <div><input type="url" name="title" value={data.image} placeholder='fileURL'/></div>
-            <div><input type="" name="title" value={data.title} placeholder='Title'/></div>
+        <form action="" className='my-10 w-[50%] text-xl'>
+        <div className='flex flex-col gap-10 text-center w-[100%]'>
+            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="title" value={data.title} onChange={(e)=>{e.target.value(setData({...data,title:e.target.value}))}} placeholder='Title'/></div>
+            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="discription" value={data.discription} placeholder='Description'  onChange={(e)=>{e.target.value(setData({...data,discription:e.target.value}))}}/></div>
+            <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='fileURL' onChange={(e)=>{e.target.value(setData({...data,image:e.target.value}))}}/></div>
+            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="credits" value={data.credits} placeholder='Credits' onChange={(e)=>{e.target.value(setData({...data,credits:e.target.value}))}}/></div>
+            
+        </div>
+            <div className='text-center my-5'>
+
+        <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={handleSubmit}>Add This Item</button>
+
+            </div>
         </form>
     </div>
   )
