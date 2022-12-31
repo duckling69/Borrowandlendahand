@@ -9,12 +9,13 @@ const SidebarItem = ({ item }) => (
             <div>
                 <i className={`${item.svg} text-gray-500 `}></i>
             </div>
-            <Link className='text-gray-500 font-bold text-xl mx-8 hover:text-[#a855f7]' to={`${item.link}`}>{item.name}</Link>
-    <h2 className='text-md italic'>{item.discription}</h2>
+            <Link className='text-gray-500 font-bold text-xl mx-8 hover:text-[#a855f7] text-end' to={`${item.link}`}>{item.name}</Link>
+
 
         </div>
     </Link>
 )
+
 
 const Sidebar = ({ loggedIn }) => {
 

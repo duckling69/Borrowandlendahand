@@ -18,9 +18,9 @@ export const sidebarLinks=[
         
     },
     {
-        name:'Lending Record',
-        link:'/lends',
-        svg: 'fa-solid fa-box'
+        name:'Lend Your Items',
+        link:'/lend/add',
+        svg: 'fa-solid fa-rectangle-list'
       
     },
     {
