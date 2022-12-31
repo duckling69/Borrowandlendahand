@@ -5,8 +5,6 @@ import { About } from "./pages"
 import { Routes,Route } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
-import Login from './components/Login'
-import Signup from "./components/Signup"
 
 function App() {
 
@@ -19,8 +17,6 @@ function App() {
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/features' element={<Features/>}></Route>
-        <Route path='/auth/login' element={<Login/>}></Route>
-        <Route path='/auth/signup' element={<Signup/>}></Route>
         
         </Routes>
       </div>
