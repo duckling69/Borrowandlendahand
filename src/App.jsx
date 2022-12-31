@@ -10,13 +10,17 @@ import Sidebar from './components/Sidebar'
 
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState('true');
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
  
     <div className="App">
       <Navbar></Navbar>
-      <div>
+        <div className="flex justify-start w-[100vw] m-0 p-0">
+        <div className=" ">
+        <Sidebar loggedIn={loggedIn}></Sidebar>
+        </div>
+      <div className="w-[100%]">
         <Routes>
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/about' element={<About/>}></Route>
@@ -25,7 +29,7 @@ function App() {
 
         </Routes>
 
-        <Sidebar loggedIn={loggedIn}></Sidebar>
+        </div>
       </div>
 
     </div>

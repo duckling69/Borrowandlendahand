@@ -6,9 +6,9 @@ const SidebarItem=({item})=>(
     <>
     <div className={`flex flex-row px-5 mt-4 items-center justify-between cursor-pointer hover:text-[#a855f7]} `}>
     <div>
-    <i className={`${item.svg} text-gray-500 `}></i>
+    <i className={`${item.svg} text-gray-500 hover:text-[#a855f7] `}></i>
     </div>
-    <div className='text-gray-500 font-bold text-xl mx-8 hover:text-[#a855f7]'>
+    <div className='text-gray-500 text-end font-bold text-xl mx-8 hover:text-[#a855f7]'>
     <h1>{item.name}</h1>
     </div>
     </div>
@@ -16,7 +16,6 @@ const SidebarItem=({item})=>(
 )
 
 const Sidebar = ({loggedIn}) => {
-    console.log(loggedIn)
   return (
     <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh] items-center justify-between bg-black/5 ${ !loggedIn && 'hidden'}  `}>
         <div>
@@ -32,7 +31,7 @@ const Sidebar = ({loggedIn}) => {
        </div>
 
        <div>
-       <h1 className='font-bold text-gray-500 font-sans text-center mt-5'>
+       <h1 className='font-bold text-gray-500 font-sans text-center mt-5 hover:text-[#a855f7] cursor-pointer'>
                 Exit &nbsp;
                 <i className="mx-3 fa-solid fa-up-right-from-square" />
             </h1>

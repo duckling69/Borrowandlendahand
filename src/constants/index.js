@@ -57,3 +57,37 @@ export const sidebarLinks=[
     },
 
 ];
+
+
+export const dummyBarChartData=[
+    {
+        id:1,
+        year:2016,
+        value:2000
+    },
+    {
+        id:2,
+        year:2017,
+        value:2500
+    },
+    {
+        id:1,
+        year:2018,
+        value:3200
+    },
+    {
+        id:1,
+        year:2019,
+        value:3700
+    },
+    {
+        id:1,
+        year:2020,
+        value:3600
+    },
+    {
+        id:1,
+        year:2021,
+        value:4100
+    }
+];
