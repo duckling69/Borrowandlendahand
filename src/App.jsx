@@ -5,12 +5,11 @@ import { About } from "./pages"
 import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
-<<<<<<< HEAD
-=======
 import Dashboard from "./pages/Dashboard"
 import Sidebar from './components/Sidebar'
+import Explore from "./pages/Explore"
+import Lending from "./pages/Lending"
 
->>>>>>> 70b297cd0a75e4358250fba3aa50a8cc28c9df36
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -25,16 +24,13 @@ function App() {
         </div>
       <div className="w-[100%]">
         <Routes>
-<<<<<<< HEAD
-          <Route path='/' element={<Hero />}></Route>
-          <Route path='/about' element={<About />}></Route>
-          <Route path='/features' element={<Features />}></Route>
-=======
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/about' element={<About/>}></Route>
         <Route path='/features' element={<Features/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}></Route>
->>>>>>> 70b297cd0a75e4358250fba3aa50a8cc28c9df36
+        <Route path='/explore' element={<Explore/>}></Route>
+        <Route path='/lend/add' element={<Lending/>}></Route>
+
 
         </Routes>
 

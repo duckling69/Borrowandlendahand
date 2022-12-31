@@ -1,18 +1,20 @@
 import React from 'react'
 import { sidebarLinks } from '../constants'
 import profile from '../assets/profileplaceholder.png'
+import {Link} from 'react-router-dom'
 
 const SidebarItem=({item})=>(
-    <>
+    <Link to={item.link}>
     <div className={`flex flex-row px-5 mt-4 items-center justify-between cursor-pointer hover:text-[#a855f7]} `}>
     <div>
     <i className={`${item.svg} text-gray-500 hover:text-[#a855f7] `}></i>
     </div>
     <div className='text-gray-500 text-end font-bold text-xl mx-8 hover:text-[#a855f7]'>
     <h1>{item.name}</h1>
+    <h2 className='text-md italic'>{item.discription}</h2>
     </div>
     </div>
-    </>
+    </Link>
 )
 
 const Sidebar = ({loggedIn}) => {
