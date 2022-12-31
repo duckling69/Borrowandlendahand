@@ -1,9 +1,10 @@
 import React from 'react';
 import image from './image.jpg'
 
+
 const Component = () => {
     return (
-        <div className=" font-mono px-4 py-2 mt-[12vh] flex items-center">
+        <div className=" font-mono px-4 py-2 mt-[12vh] flex items-center lg:flex-row flex-col-reverse">
             {/* Text and input */}
             <div className="text-gray-500 leading-tight pl-[5vw] max-w-md lg:ml-0 lg:mr-auto lg:mx-0 ">
                 <h1 className="text-5xl font-semibold">Borrow. Lend. Connect.</h1>
