@@ -5,12 +5,13 @@ import { dummyBarChartData } from '../constants'
 
 const Dashboard = () => {
   const [userData, setUserData] = useState({
-    labels: dummyBarChartData.map((item)=>item.year),
+    labels: dummyBarChartData.map((item)=>item.transaction),
     datasets:[{
-      label:'Customers',
-      data: dummyBarChartData.map((item)=>item.value),
-      backgroundColor:"black",
-      borderColor:'#a855f7'
+      label:'Credits',
+      data: dummyBarChartData.map((item)=>item.credits),
+      borderAlign:'center',
+      weight:0.5,
+      // radius:
     }]
   })
   return (

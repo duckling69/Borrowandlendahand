@@ -25,7 +25,7 @@ export const sidebarLinks=[
     },
     {
         name:'Transactions',
-        link:'/borrows',
+        link:'/transactions',
         svg: 'fa-solid fa-box-open'
       
         
@@ -62,34 +62,15 @@ export const sidebarLinks=[
 export const dummyBarChartData=[
     {
         id:1,
-        year:2016,
-        value:2000
+        'transaction':'lending',
+        credits:150
     },
     {
         id:2,
-        year:2017,
-        value:2500
+        'transaction':'borrowing',
+        credits:50
     },
-    {
-        id:1,
-        year:2018,
-        value:3200
-    },
-    {
-        id:1,
-        year:2019,
-        value:3700
-    },
-    {
-        id:1,
-        year:2020,
-        value:3600
-    },
-    {
-        id:1,
-        year:2021,
-        value:4100
-    }
+   
 ];
 
 
@@ -118,5 +99,56 @@ export const borrowItems=[
         discription:' No words needed ',
         email:'ax@asd.com',
         id: 3
+    },
+];
+
+
+export const dummyTrxn=[
+    {
+        date: '29/02/2022',
+        time: '15:05:05',
+        borrow:true,
+        title:' bagpack',
+        price:'100',
+        duration:'4',
+        credits: '-1',
+        image: 'https://img.icons8.com/external-wanicon-solid-wanicon/64/null/external-bag-kindergarten-wanicon-solid-wanicon.png',
+        person: 'Harry'
+        
+    },
+    {
+        date: '14/04/2022',
+        time: '15:05:05',
+        borrow:false,
+        title:' shoes',
+        price:'1000',
+        duration:'5',
+        credits: '+5',
+        image: 'https://img.icons8.com/parakeet/48/null/trainers.png',
+        person: 'Harry'
+    },
+    {
+        date: '14/04/2022',
+        time: '15:05:05',
+        borrow:false,
+        title:' shoes',
+        price:'1000',
+        duration:'5',
+        credits: '+5',
+        image: 'https://img.icons8.com/parakeet/48/null/trainers.png',
+        person: 'Harry3'
+        
+    },
+    {
+        date: '14/04/2022',
+        time: '15:05:05',
+        borrow:false,
+        title:' shoes',
+        price:'1000',
+        duration:'5',
+        credits: '+5',
+        image: 'https://img.icons8.com/parakeet/48/null/trainers.png',
+        person: 'Harry2'
+        
     },
 ];

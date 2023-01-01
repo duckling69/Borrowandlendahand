@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar'
 import Explore from "./pages/Explore"
 import Lending from "./pages/Lending"
 import { useAuth0 } from "@auth0/auth0-react";
+import Transactions from "./pages/Transactions"
 
 
 function App() {
@@ -38,8 +39,11 @@ function App() {
       <div className="w-[100%]">
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
+          <Route path='/about' element={<About/>}></Route>
+        <Route path='/features' element={<Features/>}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/explore' element={<Explore/>}></Route>
+          <Route path='/transactions' element={<Transactions/>}></Route>
         <Route path='/lend/add' element={<Lending/>}></Route>
         </Routes>
       </div>

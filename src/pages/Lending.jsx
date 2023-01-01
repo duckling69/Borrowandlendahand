@@ -17,7 +17,7 @@ const Lending = () => {
     // const phoneNumber=phoneInput.getNumber
 
 
-    const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
+    const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:null ,price:null})
   return (
     <div className='flex flex-col mt-[12vh] w-[100%] items-center'>
         <div className='text-center text-5xl font-mono font-bold text-gray-500'>
@@ -28,7 +28,8 @@ const Lending = () => {
         <div className='flex flex-col gap-10 text-center w-[100%]'>
             <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="title" value={data.title} onChange={(e)=>{e.target.value(setData({...data,title:e.target.value}))}} placeholder='Title'/></div>
             <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="discription" value={data.discription} placeholder='Description'  onChange={(e)=>{e.target.value(setData({...data,discription:e.target.value}))}}/></div>
-            <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='fileURL' onChange={(e)=>{e.target.value(setData({...data,image:e.target.value}))}}/></div>
+            <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='img URL' onChange={(e)=>{e.target.value(setData({...data,image:e.target.value}))}}/></div>
+            <div><input type="number" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="price" value={data.price} placeholder='Price' onChange={(e)=>{e.target.value(setData({...data,price:e.target.value}))}}/></div>
             <div className='flex justify-start'>
                 <span className='border-2 bg-slate-100 rounded-lg rounded-r-none grid place-items-center px-3'>+91</span>
                 <input type="number"  className='w-[100%] rounded-l-none   inline border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.phone} placeholder='Your Phone Number' onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}}/></div>
