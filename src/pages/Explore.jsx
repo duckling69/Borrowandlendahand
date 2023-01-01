@@ -34,7 +34,7 @@ const BorrowItem=({handleClick,itemId})=>{
         const accountSid = "ACaa1d0205bdbeef12e580d58f92da1b22";
 const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
         const sender =require('twilio')(accountSid,authToken)
-       
+
         sender.messages.create({
             to: '+91 9977114187',
             from :'+12057977944',
@@ -90,7 +90,7 @@ const Explore = () => {
     const [itemId, setItemId] = useState(null)
     const [popupOpen, setPopupOpen] = useState(false)
 
-    const [items,setItems] = useState();
+    const [items,setItems] = useState(borrowItems);
     const handleClick=()=>{
      setPopupOpen(!popupOpen);   
     }
@@ -98,18 +98,18 @@ const Explore = () => {
         console.log(popupOpen)
       
     }, [popupOpen])
-    useEffect(() => {
-        const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
-        getItems.then(
-          function (response) {
-            setItems(response.documents)
-            console.log(items)
-          },
-          function (error) {
-            console.log(error);
-          }
-        )
-      }, [])
+    // useEffect(() => {
+    //     const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
+    //     getItems.then(
+    //       function (response) {
+    //         setItems(response.documents)
+    //         console.log(items)
+    //       },
+    //       function (error) {
+    //         console.log(error);
+    //       }
+    //     )
+    //   }, [])
 
     
     
