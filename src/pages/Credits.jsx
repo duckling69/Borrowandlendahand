@@ -14,8 +14,8 @@ const Credits = () => {
             Credits
         </h1>
 
-        <div  className='text-5xl text-center py-4 px-10 border-2 rounded-xl mx-auto my-2 w-fit grid place-items-center'>
-            <h1 className='font-bold font-sans text-center text-gray-500'>
+        <div  className='text-5xl text-center py-4 px-10 border-2 border-purple-400 rounded-xl mx-auto w-fit grid place-items-center'>
+            <h1 className='font-bold font-sans text-center text-purple-400'>
                 Total Credits: {cred}
             </h1>
 

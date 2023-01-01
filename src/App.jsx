@@ -39,7 +39,7 @@ function App() {
   else {
     return (<div className="App flex justify-start w-[100vw] m-0 p-0">
        <Navbar></Navbar>
-      <Sidebar loggedIn={loggedIn}></Sidebar>
+      <Sidebar ></Sidebar>
       <div className="w-[100%]">
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
