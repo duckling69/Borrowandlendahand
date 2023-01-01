@@ -18,7 +18,8 @@
     "react-chartjs-2": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
-    "twilio": "^3.84.0"
+    "twilio": "^3.84.0",
+    "twilio-client": "^1.14.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
