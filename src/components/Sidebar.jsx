@@ -1,15 +1,18 @@
 import React from 'react'
 import { sidebarLinks } from '../constants'
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const SidebarItem = ({ item }) => (
+
+const SidebarItem = ({ item,pathname }) => (
     <Link to={item.link}>
-        <div className={`flex flex-row px-5 mt-4 items-center justify-between cursor-pointer hover:text-[#a855f7]} `}>
+        <div className={`flex flex-row px-5 mt-4 items-center justify-between cursor-pointer  hover:text-[#a855f7]} } `}>
             <div>
-                <i className={`${item.svg} text-gray-500 `}></i>
+                <i className={`${item.svg} ${pathname===item.link && "text-purple-500 "} text-gray-500 `}></i>
             </div>
-            <Link className='text-gray-500 font-bold text-xl mx-8 hover:text-[#a855f7] text-end' to={`${item.link}`}>{item.name}</Link>
+
+            {console.log()}
+            <Link className={`text-gray-500 font-bold text-xl mx-8 hover:text-[#a855f7] ${pathname===item.link && "text-purple-500 "} text-end`} to={`${item.link}`}>{item.name}</Link>
 
 
         </div>
@@ -20,6 +23,7 @@ const SidebarItem = ({ item }) => (
 const Sidebar = ({ }) => {
 
     const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+    const {pathname}=useLocation();
     console.log(user);
     return (
         <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh]  items-center justify-between bg-black/5 ${!isAuthenticated  && 'hidden'}  `}>
@@ -31,7 +35,7 @@ const Sidebar = ({ }) => {
             </div>
             <div className='flex flex-col '>
                 {sidebarLinks.map((item) => (
-                    <SidebarItem item={item} />
+                    <SidebarItem item={item} pathname={pathname} />
                 ))}
             </div>
 

@@ -42,11 +42,11 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='p-20 rounded-xl mx-10 bg-gray-300 h-[100%] w-[45%]'>
-          <h1>
-            Graphs
+        <div className='p-10 rounded-xl mx-10 bg-gray-300 h-[100%] w-[45%]'>
+        <h1 className='text-2xl text-gray-500 font-bold font-sans text-center'>
+           Credits in lending and borrowing
           </h1>
-          <div>
+          <div className='mt-5'>
             <LineChart chartData={userData}></LineChart>
           </div>
         </div>

@@ -1,5 +1,4 @@
-import React,{useState,useEffect} from 'react'
-import { borrowItems } from '../constants'
+import React,{useState,useEffect} from 'react'  
 import {Link} from 'react-router-dom'
 import client from '../api/Api'
 import {  Account, Databases, ID } from 'appwrite'
@@ -8,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const databases = new Databases(client);
 
 
-const ExploreItem=({item,handleClick,setItemId})=>(
+const ExploreItem=({item,handleClick,setItemToBorrow})=>(
     <div className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
         <div className='flex flex-row justify-around items-center w-[100%]'>
         <img src={item.image} className=' object-cover w-[50%] ' alt="" />
@@ -22,24 +21,16 @@ const ExploreItem=({item,handleClick,setItemId})=>(
         </div>  
 
         <div className='text-end w-[100%] pr-5'>
-            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick(); setItemId(item.$id);}}> Borrow This item</button>
+            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick(); setItemToBorrow(item);}}> Borrow This item</button>
         </div>  
     </div>
 )
 
-const BorrowItem=({handleClick,itemId})=>{
+const BorrowItem=({handleClick,itemToBorrow})=>{
 
     const [data, setData] = useState({phone:null,name:"",message:''})
-    const addRequest=(itemId)=>{
-        const accountSid = "ACaa1d0205bdbeef12e580d58f92da1b22";
-const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
-        const sender =require('twilio')(accountSid,authToken)
-
-        sender.messages.create({
-            to: '+91 9977114187',
-            from :'+12057977944',
-            body: data.message
-        }).then((message)=>console.log(message.sid))
+    const addRequest=(itemToBorrow)=>{
+       
 
     }
 
@@ -72,7 +63,7 @@ const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
             </div>
 
             <div className='text-center mt-5'>
-            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white'  onClick={()=>{addRequest(itemId,data)}}> Add a Borrow Request </button>
+            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white'  onClick={()=>{addRequest(itemToBorrow,data)}}> Add a Borrow Request </button>
 
             </div>
 
@@ -87,10 +78,10 @@ const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
 }
 
 const Explore = () => {
-    const [itemId, setItemId] = useState(null)
+    const [itemToBorrow, setItemToBorrow] = useState()
     const [popupOpen, setPopupOpen] = useState(false)
 
-    const [items,setItems] = useState(borrowItems);
+    const [items,setItems] = useState();
     const handleClick=()=>{
      setPopupOpen(!popupOpen);   
     }
@@ -98,18 +89,18 @@ const Explore = () => {
         console.log(popupOpen)
       
     }, [popupOpen])
-    // useEffect(() => {
-    //     const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
-    //     getItems.then(
-    //       function (response) {
-    //         setItems(response.documents)
-    //         console.log(items)
-    //       },
-    //       function (error) {
-    //         console.log(error);
-    //       }
-    //     )
-    //   }, [])
+    useEffect(() => {
+        const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
+        getItems.then(
+          function (response) {
+            setItems(response.documents)
+            console.log(items)
+          },
+          function (error) {
+            console.log(error);
+          }
+        )
+      }, [])
 
     
     
@@ -126,11 +117,11 @@ const Explore = () => {
 
         <div className='grid grid-cols-3 gap-4 width-[100%] p-10'>
             {items && items.map((item)=>(
-                <ExploreItem key={item.$id} item={item} handleClick={handleClick} setItemId={setItemId}/>
+                <ExploreItem key={item.$id} item={item} handleClick={handleClick} setItemToBorrow={setItemToBorrow}/>
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={handleClick} itemId={itemId} />}
+        {popupOpen && <BorrowItem handleClick={handleClick} item={itemToBorrow} />}
     </div>
   )
 }
