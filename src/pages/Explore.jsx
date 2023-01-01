@@ -3,21 +3,9 @@ import {Link} from 'react-router-dom'
 import client from '../api/Api'
 import {  Account, Databases, ID } from 'appwrite'
 import { useAuth0 } from "@auth0/auth0-react";
-// import twilio, { Twilio } from 'twilio';
 
 
 const databases = new Databases(client);
-const accountSid = "ACaa1d0205bdbeef12e580d58f92da1b22";
-const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
-// const client = Twilio(accountSid, authToken);
-
-// const send=({number,message})=>{
-//     client.messages.create({
-//         to: number,
-//         from :'+12057977944',
-//         body: message
-//     }).then((message)=>console.log(message.sid))
-// }
 
 const ExploreItem=({item,handleClick,setItemToBorrow})=>(
     <div className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
@@ -43,8 +31,23 @@ const BorrowItem=({handleClick,itemToBorrow})=>{
     const [data, setData] = useState({phone:null,name:"",message:''})
     const addRequest=(itemToBorrow,data)=>{
         const promise = databases.deleteDocument("63b069123cd8a70b1a17", "63b0694cde603a87898c",itemToBorrow.$id)
-        // const s = '+91'+ (itemToBorrow.Phone).toString();
-        // send(s,data.message);
+        
+        const sendsms=async({phone,message})=>{
+            let headersList = {
+                "Accept": "*/*",
+               }
+               
+               let response = await fetch("https://lend-a-handsms.vercel.app/", { 
+                 method: "POST",
+                 headers: headersList
+               });
+               
+               let data = await response.text();
+               console.log(data);
+        }
+
+        sendsms(data.phone, data.message)
+           
         
         window.location.reload();
     }
