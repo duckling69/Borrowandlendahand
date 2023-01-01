@@ -22,7 +22,7 @@ const ExploreItem=({item,handleClick,setItemId})=>(
         </div>  
 
         <div className='text-end w-[100%] pr-5'>
-            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick; setItemId(item.$id);}}> Borrow This item</button>
+            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick(); setItemId(item.$id);}}> Borrow This item</button>
         </div>  
     </div>
 )
@@ -30,8 +30,16 @@ const ExploreItem=({item,handleClick,setItemId})=>(
 const BorrowItem=({handleClick,itemId})=>{
 
     const [data, setData] = useState({phone:null,name:"",message:''})
-
     const addRequest=(itemId)=>{
+        const accountSid = "ACaa1d0205bdbeef12e580d58f92da1b22";
+const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
+        const sender =require('twilio')(accountSid,authToken)
+
+        sender.messages.create({
+            to: '+91 9977114187',
+            from :'+12057977944',
+            body: data.message
+        }).then((message)=>console.log(message.sid))
 
     }
 
@@ -51,7 +59,7 @@ const BorrowItem=({handleClick,itemId})=>{
             </h1>
         </div>
 
-    <form className='mx-10  w-[80%]'>
+    <form className='mx-10  w-[80%]' onSubmit={(e)=>{e.preventDefault()}}>
             <div className='flex flex-col gap-10'>
     
             <div><input required type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="name" value={data.title} onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}} placeholder='Your Name*'/></div>
@@ -64,7 +72,7 @@ const BorrowItem=({handleClick,itemId})=>{
             </div>
 
             <div className='text-center mt-5'>
-            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white'  onClick={()=>{addRequest(itemId)}}> Add a Borrow Request </button>
+            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white'  onClick={()=>{addRequest(itemId,data)}}> Add a Borrow Request </button>
 
             </div>
 
@@ -81,7 +89,8 @@ const BorrowItem=({handleClick,itemId})=>{
 const Explore = () => {
     const [itemId, setItemId] = useState(null)
     const [popupOpen, setPopupOpen] = useState(false)
-    const [items,setItems] = useState();
+
+    const [items,setItems] = useState(borrowItems);
     const handleClick=()=>{
      setPopupOpen(!popupOpen);   
     }
@@ -89,18 +98,20 @@ const Explore = () => {
         console.log(popupOpen)
       
     }, [popupOpen])
-    useEffect(() => {
-        const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
-        getItems.then(
-          function (response) {
-            setItems(response.documents)
-            console.log(items)
-          },
-          function (error) {
-            console.log(error);
-          }
-        )
-      }, [])
+    // useEffect(() => {
+    //     const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
+    //     getItems.then(
+    //       function (response) {
+    //         setItems(response.documents)
+    //         console.log(items)
+    //       },
+    //       function (error) {
+    //         console.log(error);
+    //       }
+    //     )
+    //   }, [])
+
+    
     
   return (
         <div className={`flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto `}>
