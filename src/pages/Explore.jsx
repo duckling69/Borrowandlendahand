@@ -1,7 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { borrowItems } from '../constants'
 import {Link} from 'react-router-dom'
+import client from '../api/Api'
+import {  Account, Databases, ID } from 'appwrite'
+import { useAuth0 } from "@auth0/auth0-react";
 
+const databases = new Databases(client);
 
 
 const ExploreItem=({item,handleClick})=>(
@@ -74,10 +78,26 @@ const BorrowItem=({handleClick})=>{
 
 const Explore = () => {
     const [popupOpen, setPopupOpen] = useState(false)
+    const [items,setItems] = useState();
     const handleClick=()=>{
      setPopupOpen(!popupOpen);   
     }
-    
+    useEffect(() => {
+        console.log(popupOpen)
+      
+    }, [popupOpen])
+    useEffect(() => {
+        const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b0694cde603a87898c")
+        getItems.then(
+          function (response) {
+            setItems(response.documents)
+            console.log(items)
+          },
+          function (error) {
+            console.log(error);
+          }
+        )
+      }, [])
     
   return (
         <div className={`flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto `}>
@@ -90,9 +110,9 @@ const Explore = () => {
             </Link>
         </div>
 
-        <div className='flex flex-row width-[100%] p-10 gap-10'>
-            {borrowItems.map((item,i)=>(
-                <ExploreItem key={i} item={item} handleClick={handleClick}/>
+        <div className='grid grid-cols-3 gap-4 width-[100%] p-10'>
+            {items && items.map((item)=>(
+                <ExploreItem key={item.$id} item={item} handleClick={handleClick}/>
             ))}
         </div>
 
