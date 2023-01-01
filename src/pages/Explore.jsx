@@ -8,8 +8,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 const databases = new Databases(client);
 
 
-const ExploreItem=({key,item,handleClick})=>(
-    <div  className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
+const ExploreItem=({item,handleClick,setItemId})=>(
+    <div className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
         <div className='flex flex-row justify-around items-center w-[100%]'>
         <img src={item.image} className=' object-cover w-[50%] ' alt="" />
            
@@ -22,16 +22,16 @@ const ExploreItem=({key,item,handleClick})=>(
         </div>  
 
         <div className='text-end w-[100%] pr-5'>
-            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>handleClick(key)}> Borrow This item</button>
+            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick; setItemId(item.$id);}}> Borrow This item</button>
         </div>  
     </div>
 )
 
-const BorrowItem=({handleClick})=>{
+const BorrowItem=({handleClick,itemId})=>{
 
     const [data, setData] = useState({phone:null,name:"",message:''})
 
-    const addRequest=()=>{
+    const addRequest=(itemId)=>{
 
     }
 
@@ -39,7 +39,9 @@ const BorrowItem=({handleClick})=>{
         <div className='w-[40vw] h-[50vh] m-auto z-20 absolute bottom-50 left-1/3 backdrop-blur-lg'>
             <div className=' shadow-2xl drop-shadow-2xl  w-[100%] h-[100%] rounded-xl bg-white border-2'>
     
-            <div className='relative right-0 top-0 cursor-pointer text-3xl text-end mx-4 hover:text-purple-500' onClick={handleClick}>
+            <div className='relative right-0 top-0 cursor-pointer text-3xl text-end mx-4 hover:text-purple-500' onClick={
+                handleClick
+            }>
             <i className="fa-solid fa-xmark"></i>
             </div>
         <div>
@@ -62,7 +64,7 @@ const BorrowItem=({handleClick})=>{
             </div>
 
             <div className='text-center mt-5'>
-            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={addRequest}> Borrow Item </button>
+            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white'  onClick={()=>{addRequest(itemId)}}> Add a Borrow Request </button>
 
             </div>
 
@@ -77,6 +79,7 @@ const BorrowItem=({handleClick})=>{
 }
 
 const Explore = () => {
+    const [itemId, setItemId] = useState(null)
     const [popupOpen, setPopupOpen] = useState(false)
     const [items,setItems] = useState();
     const handleClick=()=>{
@@ -112,11 +115,11 @@ const Explore = () => {
 
         <div className='grid grid-cols-3 gap-4 width-[100%] p-10'>
             {items && items.map((item)=>(
-                <ExploreItem key={item.$id} item={item} handleClick={handleClick}/>
+                <ExploreItem key={item.$id} item={item} handleClick={handleClick} setItemId={setItemId}/>
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={(handleClick)}/>}
+        {popupOpen && <BorrowItem handleClick={handleClick} itemId={itemId} />}
     </div>
   )
 }

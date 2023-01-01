@@ -17,12 +17,12 @@ const SidebarItem = ({ item }) => (
 )
 
 
-const Sidebar = ({ loggedIn }) => {
+const Sidebar = ({ }) => {
 
     const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
     console.log(user);
     return (
-        <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh] items-center justify-between bg-black/5 ${!isAuthenticated  && 'hidden'}  `}>
+        <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh]  items-center justify-between bg-black/5 ${!isAuthenticated  && 'hidden'}  `}>
             <div className=''>
                 <img src={user.picture} className="w-[100px] rounded-full mx-auto" alt="" />
                 <h1 className='font-bold text-gray-800 font-sans text-center mt-5'>

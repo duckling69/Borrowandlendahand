@@ -12,6 +12,7 @@ import Explore from "./pages/Explore"
 import Lending from "./pages/Lending"
 import { useAuth0 } from "@auth0/auth0-react";
 import Transactions from "./pages/Transactions"
+import Credits from "./pages/Credits"
 
 
 
@@ -37,7 +38,8 @@ function App() {
   }
   else {
     return (<div className="App flex justify-start w-[100vw] m-0 p-0">
-      <Sidebar loggedIn={loggedIn}></Sidebar>
+       <Navbar></Navbar>
+      <Sidebar ></Sidebar>
       <div className="w-[100%]">
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
@@ -47,6 +49,7 @@ function App() {
           <Route path='/explore' element={<Explore/>}></Route>
           <Route path='/transactions' element={<Transactions/>}></Route>
         <Route path='/lend/add' element={<Lending/>}></Route>
+        <Route path='/credits' element={<Credits/>}></Route>
         </Routes>
       </div>
 
