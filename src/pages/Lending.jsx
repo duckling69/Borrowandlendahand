@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useRef} from 'react'
 
 
 
@@ -7,6 +7,15 @@ const Lending = () => {
     const handleSubmit=()=>{
         
     }
+
+    // const phoneRef=useRef(null);
+    // const phoneInput = window.intlTelInput(phoneRef, {
+    //     utilsScript:
+    //       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    //   });
+
+    // const phoneNumber=phoneInput.getNumber
+
 
     const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
   return (
@@ -22,7 +31,7 @@ const Lending = () => {
             <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='fileURL' onChange={(e)=>{e.target.value(setData({...data,image:e.target.value}))}}/></div>
             <div className='flex justify-start'>
                 <span className='border-2 bg-slate-100 rounded-lg rounded-r-none grid place-items-center px-3'>+91</span>
-                <input type="number" className='w-[100%] rounded-l-none   inline border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.phone} placeholder='Your Phone Number' onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}}/></div>
+                <input type="number"  className='w-[100%] rounded-l-none   inline border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.phone} placeholder='Your Phone Number' onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}}/></div>
             <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="credits" value={data.credits} placeholder='Credits' onChange={(e)=>{e.target.value(setData({...data,credits:e.target.value}))}}/></div>
             
         </div>
