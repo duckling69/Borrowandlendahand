@@ -6,7 +6,6 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
 import Dashboard from "./pages/Dashboard"
-import Borrow from "./pages/Borrow"
 
 import Sidebar from './components/Sidebar'
 import Explore from "./pages/Explore"
@@ -37,7 +36,6 @@ function App() {
   }
   else {
     return (<div className="App flex justify-start w-[100vw] m-0 p-0">
-       <Navbar></Navbar>
       <Sidebar loggedIn={loggedIn}></Sidebar>
       <div className="w-[100%]">
         <Routes>
