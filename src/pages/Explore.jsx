@@ -27,7 +27,7 @@ const ExploreItem=({item,handleClick})=>(
     </div>
 )
 
-const BorrowItem=({handleClick})=>{
+const BorrowItem=({handleClick,setItemId})=>{
 
     const [data, setData] = useState({phone:null,name:"",message:''})
 
@@ -62,7 +62,9 @@ const BorrowItem=({handleClick})=>{
             </div>
 
             <div className='text-center mt-5'>
-            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={addRequest}> Add a Borrow Request </button>
+            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={()=>{
+                handleClick; setItemId(item.$id)
+            }}> Add a Borrow Request </button>
 
             </div>
 
@@ -77,6 +79,7 @@ const BorrowItem=({handleClick})=>{
 }
 
 const Explore = () => {
+    const [itemId, setItemId] = useState(null)
     const [popupOpen, setPopupOpen] = useState(false)
     const [items,setItems] = useState();
     const handleClick=()=>{
@@ -112,11 +115,11 @@ const Explore = () => {
 
         <div className='grid grid-cols-3 gap-4 width-[100%] p-10'>
             {items && items.map((item)=>(
-                <ExploreItem key={item.$id} item={item} handleClick={handleClick}/>
+                <ExploreItem key={item.$id} item={item} handleClick={handleClick} setItemId={setItemId}/>
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={handleClick}/>}
+        {popupOpen && <BorrowItem handleClick={handleClick} itemId={itemId} />}
     </div>
   )
 }
