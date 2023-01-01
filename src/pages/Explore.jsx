@@ -3,9 +3,21 @@ import {Link} from 'react-router-dom'
 import client from '../api/Api'
 import {  Account, Databases, ID } from 'appwrite'
 import { useAuth0 } from "@auth0/auth0-react";
+// import twilio, { Twilio } from 'twilio';
+
 
 const databases = new Databases(client);
+const accountSid = "ACaa1d0205bdbeef12e580d58f92da1b22";
+const authToken = "3f46fe0170ceb0f0e7058245613b68e0";
+// const client = Twilio(accountSid, authToken);
 
+// const send=({number,message})=>{
+//     client.messages.create({
+//         to: number,
+//         from :'+12057977944',
+//         body: message
+//     }).then((message)=>console.log(message.sid))
+// }
 
 const ExploreItem=({item,handleClick,setItemToBorrow})=>(
     <div className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
@@ -27,11 +39,14 @@ const ExploreItem=({item,handleClick,setItemToBorrow})=>(
 )
 
 const BorrowItem=({handleClick,itemToBorrow})=>{
-
+    
     const [data, setData] = useState({phone:null,name:"",message:''})
-    const addRequest=(itemToBorrow)=>{
-       
-
+    const addRequest=(itemToBorrow,data)=>{
+        const promise = databases.deleteDocument("63b069123cd8a70b1a17", "63b0694cde603a87898c",itemToBorrow.$id)
+        // const s = '+91'+ (itemToBorrow.Phone).toString();
+        // send(s,data.message);
+        
+        window.location.reload();
     }
 
     return(
@@ -53,12 +68,12 @@ const BorrowItem=({handleClick,itemToBorrow})=>{
     <form className='mx-10  w-[80%]' onSubmit={(e)=>{e.preventDefault()}}>
             <div className='flex flex-col gap-10'>
     
-            <div><input required type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="name" value={data.title} onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}} placeholder='Your Name*'/></div>
+            <div><input required type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="name" value={data.title} onChange={(e)=>{setData({...data,phone:e.target.value})}} placeholder='Your Name*'/></div>
 
-            <div><input required type="number" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.title} onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}} placeholder='Your Phone Number*'/></div>
+            <div><input required type="number" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.title} onChange={(e)=>{setData({...data,phone:e.target.value})}} placeholder='Your Phone Number*'/></div>
 
 
-            <div><textarea rows={3} className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.title} onChange={(e)=>{e.target.value(setData({...data,phone:e.target.value}))}} placeholder='A message?'/></div>
+            <div><textarea rows={3} className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.title} onChange={(e)=>{setData({...data,phone:e.target.value})}} placeholder='A message?'/></div>
                 
             </div>
 
@@ -78,7 +93,7 @@ const BorrowItem=({handleClick,itemToBorrow})=>{
 }
 
 const Explore = () => {
-    const [itemToBorrow, setItemToBorrow] = useState()
+    const [itemToBorrow, setItemToBorrow] = useState({})
     const [popupOpen, setPopupOpen] = useState(false)
 
     const [items,setItems] = useState();
@@ -121,7 +136,7 @@ const Explore = () => {
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={handleClick} item={itemToBorrow} />}
+        {popupOpen && <BorrowItem handleClick={handleClick} itemToBorrow={itemToBorrow} />}
     </div>
   )
 }
