@@ -22,7 +22,7 @@ const ExploreItem=({item,handleClick,setItemId})=>(
         </div>  
 
         <div className='text-end w-[100%] pr-5'>
-            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick; setItemId(item.$id);}}> Borrow This item</button>
+            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>{handleClick(); setItemId(item.$id);}}> Borrow This item</button>
         </div>  
     </div>
 )
@@ -32,7 +32,16 @@ const BorrowItem=({handleClick,itemId})=>{
     const [data, setData] = useState({phone:null,name:"",message:''})
 
     const addRequest=(itemId)=>{
-
+        const promise = databases.deleteDocument("63b069123cd8a70b1a17", "63b0694cde603a87898c", itemId)
+        promise.then(
+            function (response) {
+              console.log(response);
+            },
+            function (error) {
+              console.log(error);
+            }
+          )
+          window.location.reload()
     }
 
     return(
