@@ -23,8 +23,8 @@ const Sidebar = ({ loggedIn }) => {
     console.log(user);
     return (
         <div className={`flex flex-col pt-[12vh] pb-[8vh] w-fit h-[100vh] items-center justify-between bg-black/5 ${!isAuthenticated  && 'hidden'}  `}>
-            <div>
-                <img src={user.picture} className="w-[100px] rounded-full" alt="" />
+            <div className=''>
+                <img src={user.picture} className="w-[100px] rounded-full mx-auto" alt="" />
                 <h1 className='font-bold text-gray-800 font-sans text-center mt-5'>
                     {user.name}
                 </h1>
@@ -36,7 +36,7 @@ const Sidebar = ({ loggedIn }) => {
             </div>
 
             <div>
-                <button onClick={() => logout({ returnTo: window.location.origin })} className='font-bold text-gray-500 font-sans text-center mt-5'>
+                <button onClick={() => logout({ returnTo: window.location.origin })} className='font-bold text-gray-500 font-sans text-center mt-5 hover:text-purple-500'>
                     Exit &nbsp;
                     <i className="mx-3 fa-solid fa-up-right-from-square" />
                 </button>

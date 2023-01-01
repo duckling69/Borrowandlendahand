@@ -37,7 +37,7 @@ const BorrowItem=({handleClick})=>{
 
     return(
         <div className='w-[40vw] h-[50vh] m-auto z-20 absolute bottom-50 left-1/3 backdrop-blur-lg'>
-            <div className=' shadow-lg w-[100%] h-[100%] rounded-xl bg-white border-2'>
+            <div className=' shadow-2xl drop-shadow-2xl  w-[100%] h-[100%] rounded-xl bg-white border-2'>
     
             <div className='relative right-0 top-0 cursor-pointer text-3xl text-end mx-4 hover:text-purple-500' onClick={handleClick}>
             <i className="fa-solid fa-xmark"></i>
@@ -100,11 +100,11 @@ const Explore = () => {
       }, [])
     
   return (
-    <div className='flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto '>
-        <div className='flex justify-between'> 
-            <h1 className='text-5xl text-gray-500 text-left ml-5 font-sans font-bold'>
-                Explore items
-            </h1>
+        <div className={`flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto `}>
+            <div className='flex justify-between'> 
+                <h1 className='text-5xl text-gray-500 text-left ml-5 font-sans font-bold'>
+                    Explore items
+                </h1>
             <Link to='/lend/add'>
             <button className='bg-purple-500 text-white hover:bg-purple-700 py-2 px-4 mr-5 rounded-lg'> Add Your Item for lending</button>
             </Link>
