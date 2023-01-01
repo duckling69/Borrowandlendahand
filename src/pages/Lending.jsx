@@ -24,7 +24,7 @@ const Lending = () => {
             <h1>Add your item:</h1>
         </div>
 
-        <form action="" className='my-10 w-[50%] text-xl'>
+        <form onSubmit={(e)=>{e.preventDefault()}} className='my-10 w-[50%] text-xl' method='POST'>
         <div className='flex flex-col gap-10 text-center w-[100%]'>
             <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="title" value={data.title} onChange={(e)=>{e.target.value(setData({...data,title:e.target.value}))}} placeholder='Title'/></div>
             <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="discription" value={data.discription} placeholder='Description'  onChange={(e)=>{e.target.value(setData({...data,discription:e.target.value}))}}/></div>

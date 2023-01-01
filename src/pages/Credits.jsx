@@ -4,42 +4,31 @@ import ItemCard from './ItemCard'
 
 
 
-
-
-const Transactions = () => {
+const Credits = () => {
   return (
     <div className={`flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto ml-4`}>
     <div className=''> 
         <h1 className='text-5xl text-gray-500 text-left ml-5 font-sans font-bold mb-10'>
-            Transactions
+            Credits
         </h1>
 
         {/* Dispaying Borrow trxn */}
        <div className='flex flex-col my-4'>
        <h2 className='text-2xl text-gray-400 text-left ml-5 font-sans font-bold mb-10'>
-            Borrowings:
+            Transactions:
         </h2>
+
         <div className='flex flex-row gap-20 mx-5 flex-wrap justify-start '>
-            {dummyTrxn.map((item,i)=>{if (item.borrow) return(<ItemCard key={i} item={item}  />)})}
+            {dummyTrxn.map((item,i)=>{ return(<ItemCard key={i} item={item} creditOnly={true} />)})}
 
         </div>
 
        </div>
 
-       {/* displaying lend trxn */}
-       <div className='flex flex-col my-4'>
-       <h2 className='text-2xl text-gray-400 text-left ml-5 font-sans font-bold mb-10'>
-            Lendings:
-        </h2>
-        <div className='flex flex-row gap-20 mx-5 flex-wrap justify-start '>
-            {dummyTrxn.map((item,i)=>{if (!item.borrow) return(<ItemCard key={i} item={item}  />)})}
-
-        </div>
-
-       </div>
+       
     </div>
     </div>
   )
 }
 
-export default Transactions
+export default Credits
