@@ -42,8 +42,6 @@ function App() {
       <div className="w-[100%]">
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
-          <Route path='/about' element={<About/>}></Route>
-        <Route path='/features' element={<Features/>}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/explore' element={<Explore/>}></Route>
           <Route path='/transactions' element={<Transactions/>}></Route>

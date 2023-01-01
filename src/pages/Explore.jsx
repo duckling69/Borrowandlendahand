@@ -121,7 +121,7 @@ const Explore = () => {
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={handleClick} item={itemToBorrow} />}
+        {popupOpen && <BorrowItem handleClick={handleClick} itemToBorrow={itemToBorrow} />}
     </div>
   )
 }
