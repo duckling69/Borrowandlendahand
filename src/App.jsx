@@ -6,7 +6,6 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
 import Dashboard from "./pages/Dashboard"
-import Borrow from "./pages/Borrow"
 
 import Sidebar from './components/Sidebar'
 import Explore from "./pages/Explore"

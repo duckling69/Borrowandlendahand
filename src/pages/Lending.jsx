@@ -41,7 +41,7 @@ const Lending = () => {
     // const phoneNumber=phoneInput.getNumber
 
 
-    const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
+    // const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
   return (
     <div className='flex flex-col mt-[12vh] w-[100%] items-center'>
         <div className='text-center text-5xl font-mono font-bold text-gray-500'>
