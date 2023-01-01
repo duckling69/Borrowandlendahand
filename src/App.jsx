@@ -6,11 +6,15 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
 import Dashboard from "./pages/Dashboard"
+import Borrow from "./pages/Borrow"
+
 import Sidebar from './components/Sidebar'
 import Explore from "./pages/Explore"
 import Lending from "./pages/Lending"
 import { useAuth0 } from "@auth0/auth0-react";
 import Transactions from "./pages/Transactions"
+
+
 
 
 function App() {
