@@ -59,7 +59,7 @@ const Dashboard = () => {
       <div className='flex px-20 py-5 flex-row h-[45%] w-[100%] justify-evenly'>
 
       {/* Card 1 */}
-        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-lg justify-evenly'>
+        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-xl justify-evenly'>
         <div className='w-[30%] aspect-square grid place-items-center text-4xl rounded-full bg-purple-500 text-white'>
         <i className="fa-solid fa-meteor"></i>
         </div>
@@ -70,7 +70,7 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-lg justify-evenly'>
+        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-xl justify-evenly'>
         <div className='w-[30%] aspect-square grid place-items-center text-4xl rounded-full bg-purple-500 text-white'>
         <i className="fa-solid fa-gift"></i>
         </div>
@@ -81,7 +81,7 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-lg justify-evenly'>
+        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-xl justify-evenly'>
         <div className='w-[30%] aspect-square grid place-items-center text-4xl rounded-full bg-purple-500 text-white'>
         <i className="fa-solid fa-box-open"></i>
         </div>
@@ -92,7 +92,7 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-lg justify-evenly'>
+        <div className='h-[100%] w-[20%]   flex flex-col items-center bg-zinc-800 rounded-xl justify-evenly'>
         <div className='w-[30%] aspect-square grid place-items-center text-4xl rounded-full bg-purple-500 text-white'>
         <i className="fa-solid fa-hand-holding-heart"></i>
         </div>
