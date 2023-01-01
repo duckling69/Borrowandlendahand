@@ -8,8 +8,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 const databases = new Databases(client);
 
 
-const ExploreItem=({item,handleClick})=>(
-    <div className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
+const ExploreItem=({key,item,handleClick})=>(
+    <div  className='bg-white text-gray-500 rounded-lg w-[20vw] h-[15vw] border-2 flex flex-col items-center text-center justify-around'>
         <div className='flex flex-row justify-around items-center w-[100%]'>
         <img src={item.image} className=' object-cover w-[50%] ' alt="" />
            
@@ -22,7 +22,7 @@ const ExploreItem=({item,handleClick})=>(
         </div>  
 
         <div className='text-end w-[100%] pr-5'>
-            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={handleClick}> Borrow This item</button>
+            <button className='bg-purple-500 py-2 px-4 text-white rounded-lg hover:bg-purple-700' onClick={()=>handleClick(key)}> Borrow This item</button>
         </div>  
     </div>
 )
@@ -62,7 +62,7 @@ const BorrowItem=({handleClick})=>{
             </div>
 
             <div className='text-center mt-5'>
-            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={addRequest}> Add a Borrow Request </button>
+            <button className='px-2 py-3 bg-purple-500 hover:bg-purple-700 rounded-lg text-white' onClick={addRequest}> Borrow Item </button>
 
             </div>
 
@@ -116,7 +116,7 @@ const Explore = () => {
             ))}
         </div>
 
-        {popupOpen && <BorrowItem handleClick={handleClick}/>}
+        {popupOpen && <BorrowItem handleClick={(handleClick)}/>}
     </div>
   )
 }

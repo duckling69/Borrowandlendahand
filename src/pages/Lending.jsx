@@ -10,7 +10,8 @@ const Lending = () => {
 
     const {user} = useAuth0();
     const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
-    const handleSubmit=()=>{
+    const handleSubmit=(event)=>{
+        event.preventDefault();
         const promise = databases.createDocument("63b069123cd8a70b1a17", "63b0694cde603a87898c", ID.unique(),
           {title: data.title,
           image: data.image,
@@ -19,6 +20,24 @@ const Lending = () => {
           email: user.email,
           Phone: data.phone
         })
+        const lendItems = databases.createDocument("63b069123cd8a70b1a17", "63b09c016fb4b6d60704", ID.unique(),
+          {title: data.title,
+          image: data.image,
+          credits: data.credits,
+          discription: data.discription,
+          email: user.email,
+          Phone: data.phone
+        })
+        console.log(lendItems);
+        lendItems.then(
+          function (response) {
+            console.log(response);
+    
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
           console.log(promise);
           promise.then(
             function (response) {
@@ -41,7 +60,7 @@ const Lending = () => {
     // const phoneNumber=phoneInput.getNumber
 
 
-    const [data, setData] = useState({title:'',discription:'',image:'',credits:'',email:'',phone:0})
+    
   return (
     <div className='flex flex-col mt-[12vh] w-[100%] items-center'>
         <div className='text-center text-5xl font-mono font-bold text-gray-500'>
@@ -50,9 +69,9 @@ const Lending = () => {
 
         <form action="" className='my-10 w-[50%] text-xl'>
         <div className='flex flex-col gap-10 text-center w-[100%]'>
-            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="title" value={data.title} onChange={(e)=>{e.target.value(setData({...data,title:e.target.value}))}} placeholder='Title'/></div>
-            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="discription" value={data.discription} placeholder='Description'  onChange={(e)=>{e.target.value(setData({...data,discription:e.target.value}))}}/></div>
-            <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='fileURL' onChange={(e)=>{e.target.value(setData({...data,image:e.target.value}))}}/></div>
+            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="title" value={data.title} onChange={(e)=>{setData({...data,title:e.target.value})}} placeholder='Title'/></div>
+            <div><input type="text" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="discription" value={data.discription} placeholder='Description'  onChange={(e)=>{setData({...data,discription:e.target.value})}}/></div>
+            <div><input type="url" className='w-[100%] border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="image" value={data.image} placeholder='fileURL' onChange={(e)=>{setData({...data,image:e.target.value})}}/></div>
             <div className='flex justify-start'>
                 <span className='border-2 bg-slate-100 rounded-lg rounded-r-none grid place-items-center px-3'>+91</span>
                 <input type="number"  className='w-[100%] rounded-l-none   inline border-2 active:border-purple-500 rounded-xl active:ring-purple-500 py-3 px-2' name="phone" value={data.phone} placeholder='Your Phone Number' onChange={(e)=>{setData({...data,phone:e.target.value})}}/></div>

@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { dummyTrxn } from '../constants'
+import client from '../api/Api'
+import {  Account, Databases, ID } from 'appwrite'
+import { useAuth0 } from "@auth0/auth0-react";
+
+const databases = new Databases(client);
 
 
 const ItemCard=({item})=>(
@@ -12,14 +17,11 @@ const ItemCard=({item})=>(
         <h1 className='text-xl font-sans font-bold my-2'>
             {item.title}
         </h1>
-        <h2 className='text-md italic my-2'>On {item.date} at {item.time}</h2>
-        <h2 className='text-md  my-2'>For {item.duration} days</h2>
         <div className='flex flex-row justify-between w-[100%]'>
-        <h2 className='text-md border-1 bg-gray-500 rounded-xl text-white w-fit px-5 my-2'> Rs. {item.price}</h2>
         <h2 className='text-md border-1 bg-purple-500 rounded-xl text-white w-fit px-5 my-2'> {item.credits}</h2>
 
         </div>
-        <h2 className='text-md  my-2'> {item.borrow===true?"From":'To'} {item.person}</h2>
+        <h2 className='text-md  my-2'> {item.email}</h2>
 
         </div>
     </div>  
@@ -31,6 +33,20 @@ const ItemCard=({item})=>(
 )
 
 const Transactions = () => {
+    const [Lentitems,setLentItems] = useState();
+    useEffect(() => {
+        const getItems = databases.listDocuments("63b069123cd8a70b1a17", "63b09c016fb4b6d60704")
+        getItems.then(
+          function (response) {
+            setLentItems(response.documents)
+            console.log(Lentitems)
+          },
+          function (error) {
+            console.log(error);
+          }
+        )
+      }, [])
+
   return (
     <div className={`flex flex-col h-[88vh] w-[100%] mt-[12vh] m-auto ml-4`}>
     <div className=''> 
@@ -56,7 +72,7 @@ const Transactions = () => {
             Lendings:
         </h2>
         <div className='flex flex-row gap-20 mx-5 flex-wrap justify-start '>
-            {dummyTrxn.map((item,i)=>{if (!item.borrow) return(<ItemCard key={i} item={item}  />)})}
+            {Lentitems && Lentitems.map((item)=>(<ItemCard key={item.$id} item={item}  />))}
 
         </div>
 
