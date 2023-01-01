@@ -24,7 +24,7 @@ export const sidebarLinks=[
       
     },
     {
-        name:'Borrowing Record',
+        name:'Transactions',
         link:'/borrows',
         svg: 'fa-solid fa-box-open'
       
@@ -54,14 +54,7 @@ export const sidebarLinks=[
         svg: 'fa-solid fa-user-group'
         
     },
-    {
-        name:'Settings',
-        link:'/settings',
-        svg: 'fa-solid fa-gear'
-      
-  
-        
-    },
+    
 
 ];
 
