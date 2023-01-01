@@ -6,8 +6,12 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react"
 import Features from "./pages/Features"
 import Dashboard from "./pages/Dashboard"
+import Borrow from "./pages/Borrow"
+
 import Sidebar from './components/Sidebar'
 import { useAuth0 } from "@auth0/auth0-react";
+
+
 
 
 function App() {
@@ -33,6 +37,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Dashboard />}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
+          <Route path='/borrows' element={<Borrow />}></Route>
         </Routes>
       </div>
 
